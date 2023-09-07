@@ -29,7 +29,7 @@ function register_custom_post_type() {
 			'show_in_rest' => true,
 			'menu_icon'    => 'dashicons-rss',
 			'rewrite'      => array(
-				'slug' => 'rssclub',
+				'slug' => 'rss-club',
 			),
 			'labels'       => array(
 				'name'               => __( 'RSS Club', 'rssclub' ),
