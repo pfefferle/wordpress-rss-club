@@ -82,3 +82,18 @@ function request( $query_vars ) {
 	return $query_vars;
 }
 add_filter( 'request', __NAMESPACE__ . '\request' );
+
+/**
+ * “We are much better at writing code than haiku.”
+ * — Matt Mullenweg, founder of Automattic
+ *
+ * @return void
+ */
+function add_feed_head() {
+	echo "\n\n<!--\n
+	Feeds whisper secrets,
+	In the RSS Club's embrace,
+	Knowledge blooms in grace.\n
+-->\n\n";
+}
+add_action( 'rss_tag_pre', __NAMESPACE__ . '\add_feed_head' );
