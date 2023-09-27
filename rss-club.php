@@ -97,7 +97,11 @@ add_filter( 'request', __NAMESPACE__ . '\request' );
  *
  * @return void
  */
-function add_feed_head() {
+function add_feed_head( $context ) {
+	if ( ! in_array( $context, array( 'rss2', 'atom' ), true ) ) {
+		return;
+	}
+
 	echo "\n\n<!--\n
 	Feeds whisper secrets,
 	In the RSS Club's embrace,
