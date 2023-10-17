@@ -29,6 +29,7 @@ function register_custom_post_type() {
 				'editor',
 				'author',
 				'comments',
+				'trackbacks',
 				'revisions',
 				'custom-fields',
 				'page-attributes',
