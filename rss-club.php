@@ -69,7 +69,7 @@ add_action( 'init', __NAMESPACE__ . '\register_custom_post_type' );
  */
 function add_warning( $content ) {
 	if ( 'rssclub' === get_post_type() ) {
-		$content = '<p>' . wp_kses( __( 'It\'s a secret to everyone! <a href="https://daverupert.com/rss-club/">Read more about RSS Club</a>.', 'rssclub' ), array( 'a' => array( 'href' => array() ) ) ) . '</p>' . $content;
+		$content = '<p>' . wp_kses( __( '👊 It\'s a secret to everyone! <a href="https://daverupert.com/rss-club/">Read more about RSS Club</a>.', 'rssclub' ), array( 'a' => array( 'href' => array() ) ) ) . '</p>' . $content;
 	}
 
 	return $content;
