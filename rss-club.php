@@ -22,7 +22,7 @@ function register_custom_post_type() {
 		'rssclub',
 		array(
 			'label'        => __( 'RSS Club', 'rssclub' ),
-			'description'  => __( 'RSS Club', 'rssclub' ),
+			'description'  => __( 'RSS Club is a collection of blogs (personal and otherwise) committed to providing RSS-only content. It’s like a newsletter delivered to your feed reader in order to celebrate the medium of RSS and breakaway from social media.', 'rssclub' ),
 			'public'       => true,
 			'supports'     => array(
 				'title',
