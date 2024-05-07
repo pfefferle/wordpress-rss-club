@@ -85,8 +85,17 @@ add_filter( 'the_content', __NAMESPACE__ . '\add_warning' );
  * @return array The modified query vars.
  */
 function request( $query_vars ) {
-	if ( isset( $query_vars['feed'] ) && ! isset( $query_vars['post_type'] ) ) {
+	if ( ! isset( $query_vars['feed'] ) ) {
+		// Do nothing.
+		return $query_vars;
+	}
+
+	if ( ! isset( $query_vars['post_type'] ) ) {
+		// This is the *unaltered* main feed.
 		$query_vars['post_type'] = array( 'post', 'rssclub' );
+	} elseif ( is_array( $query_vars['post_type'] ) && in_array( 'post', $query_vars['post_type'], true ) ) {
+		// Wherever `post` is included, add `rssclub` as well.
+		$query_vars['post_type'][] = 'rssclub';
 	}
 
 	return $query_vars;
