@@ -58,6 +58,8 @@ function register_custom_post_type() {
 			),
 		)
 	);
+
+	\register_taxonomy_for_object_type( 'post_tag', 'rssclub' );
 }
 add_action( 'init', __NAMESPACE__ . '\register_custom_post_type' );
 
