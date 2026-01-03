@@ -47,5 +47,7 @@ wp-config.php
 # uncomment the next line
 #/wp-content/themes
 /vendor/
+node_modules/
+package-lock.json
 
 composer.lock
