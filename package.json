@@ -1,0 +1,14 @@
+{
+  "name": "wordpress-rss-club",
+  "description": "RSS Club for WordPress",
+  "author": "Matthias Pfefferle",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@wordpress/env": "^10.0.0"
+  },
+  "scripts": {
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop",
+    "env:destroy": "wp-env destroy"
+  }
+}
