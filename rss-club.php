@@ -72,7 +72,17 @@ function register_custom_post_type() {
  */
 function add_info( $content ) {
 	if ( 'rssclub' === get_post_type() ) {
-		$content = '<p>' . wp_kses( __( '👊 It\'s a secret to everyone! <a href="https://daverupert.com/rss-club/">Read more about RSS Club</a>.', 'rssclub' ), array( 'a' => array( 'href' => array() ) ) ) . '</p><hr />' . $content;
+		$info = '<li style="list-style-type: \'*\2008  \'">' . wp_kses( __( '👊 It\'s a secret to everyone! <a href="https://daverupert.com/rss-club/">Read more about RSS Club</a>.', 'rssclub' ), array( 'a' => array( 'href' => array() ) ) ) . '</li>';
+
+		// Add the info as last entry of the core footnotes list, or start one.
+		$footnotes = strpos( $content, 'wp-block-footnotes' );
+		$end       = false === $footnotes ? false : strpos( $content, '</ol>', $footnotes );
+
+		if ( false === $end ) {
+			$content .= '<ol class="wp-block-footnotes">' . $info . '</ol>';
+		} else {
+			$content = substr_replace( $content, $info, $end, 0 );
+		}
 	}
 
 	return $content;
