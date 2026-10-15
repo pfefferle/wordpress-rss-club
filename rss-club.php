@@ -61,23 +61,23 @@ function register_custom_post_type() {
 
 	\register_taxonomy_for_object_type( 'post_tag', 'rssclub' );
 }
-add_action( 'init', __NAMESPACE__ . '\register_custom_post_type' );
+\add_action( 'init', __NAMESPACE__ . '\register_custom_post_type' );
 
 /**
- * Add warning to content
+ * Add info to content
  *
  * @param string $content The post content.
  *
  * @return string The modified post content.
  */
-function add_warning( $content ) {
+function add_info( $content ) {
 	if ( 'rssclub' === get_post_type() ) {
-		$content = '<p>' . wp_kses( __( '👊 It\'s a secret to everyone! <a href="https://daverupert.com/rss-club/">Read more about RSS Club</a>.', 'rssclub' ), array( 'a' => array( 'href' => array() ) ) ) . '</p>' . $content;
+		$content = '<p>' . wp_kses( __( '👊 It\'s a secret to everyone! <a href="https://daverupert.com/rss-club/">Read more about RSS Club</a><hr />.', 'rssclub' ), array( 'a' => array( 'href' => array() ) ) ) . '</p>' . $content;
 	}
 
 	return $content;
 }
-add_filter( 'the_content', __NAMESPACE__ . '\add_warning' );
+\add_filter( 'the_content', __NAMESPACE__ . '\add_info' );
 
 /**
  * Add custom post type to main query
@@ -102,11 +102,14 @@ function request( $query_vars ) {
 
 	return $query_vars;
 }
-add_filter( 'request', __NAMESPACE__ . '\request' );
+\add_filter( 'request', __NAMESPACE__ . '\request' );
 
 /**
  * “We are much better at writing code than haiku.”
  * — Matt Mullenweg, founder of Automattic
+ *
+ * @param string $context Type of feed. Possible values include 'rss2', 'rss2-comments',
+ *                        'rdf', 'atom', and 'atom-comments'.
  *
  * @return void
  */
@@ -121,4 +124,4 @@ function add_feed_head( $context ) {
 	Knowledge blooms in grace.\n
 -->\n\n";
 }
-add_action( 'rss_tag_pre', __NAMESPACE__ . '\add_feed_head' );
+\add_action( 'rss_tag_pre', __NAMESPACE__ . '\add_feed_head' );
