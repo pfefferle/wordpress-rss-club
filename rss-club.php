@@ -80,7 +80,8 @@ function add_help_tabs() {
 			'id'      => 'rssclub-overview',
 			'title'   => __( 'Overview', 'rssclub' ),
 			'content' => '<h2>' . esc_html__( 'Overview', 'rssclub' ) . '</h2>' .
-				'<p>' . esc_html( \get_post_type_object( 'rssclub' )->description ) . '</p>',
+				'<p>' . esc_html__( 'RSS Club is an idea by Dave Rupert: posts that are only published in the RSS feed. They do not show up on the homepage or in the archives, so only people who follow the blog in a feed reader will find them.', 'rssclub' ) . '</p>' .
+				'<p>' . esc_html__( 'The idea is to give something back to feed readers and to depend less on social media to reach people. Everyone can start an RSS Club on their own blog.', 'rssclub' ) . '</p>',
 		)
 	);
 
