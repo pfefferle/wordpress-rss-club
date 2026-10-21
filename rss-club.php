@@ -64,6 +64,46 @@ function register_custom_post_type() {
 \add_action( 'init', __NAMESPACE__ . '\register_custom_post_type' );
 
 /**
+ * Add help tabs to the RSS Club post list
+ *
+ * @return void
+ */
+function add_help_tabs() {
+	$screen = \get_current_screen();
+
+	if ( ! $screen || 'rssclub' !== $screen->post_type ) {
+		return;
+	}
+
+	$screen->add_help_tab(
+		array(
+			'id'      => 'rssclub-overview',
+			'title'   => __( 'Overview', 'rssclub' ),
+			'content' => '<p>' . esc_html( \get_post_type_object( 'rssclub' )->description ) . '</p>',
+		)
+	);
+
+	$screen->add_help_tab(
+		array(
+			'id'      => 'rssclub-how-it-works',
+			'title'   => __( 'How it works', 'rssclub' ),
+			'content' => '<ul>' .
+				'<li>' . esc_html__( 'RSS Club posts are added to your main feed and to every feed that contains regular posts.', 'rssclub' ) . '</li>' .
+				'<li>' . esc_html__( 'They do not show up on your homepage or in your regular post archives.', 'rssclub' ) . '</li>' .
+				'<li>' . esc_html__( 'Every RSS Club post gets a footnote that links to the RSS Club rules.', 'rssclub' ) . '</li>' .
+				'</ul>',
+		)
+	);
+
+	$screen->set_help_sidebar(
+		'<p><strong>' . esc_html__( 'For more information:', 'rssclub' ) . '</strong></p>' .
+		'<p><a href="https://daverupert.com/rss-club/">' . esc_html__( 'About RSS Club', 'rssclub' ) . '</a></p>' .
+		'<p><a href="https://github.com/pfefferle/wordpress-rss-club">' . esc_html__( 'Plugin on GitHub', 'rssclub' ) . '</a></p>'
+	);
+}
+\add_action( 'load-edit.php', __NAMESPACE__ . '\add_help_tabs' );
+
+/**
  * Add info to content
  *
  * @param string $content The post content.
