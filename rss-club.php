@@ -79,7 +79,8 @@ function add_help_tabs() {
 		array(
 			'id'      => 'rssclub-overview',
 			'title'   => __( 'Overview', 'rssclub' ),
-			'content' => '<p>' . esc_html( \get_post_type_object( 'rssclub' )->description ) . '</p>',
+			'content' => '<h2>' . esc_html__( 'Overview', 'rssclub' ) . '</h2>' .
+				'<p>' . esc_html( \get_post_type_object( 'rssclub' )->description ) . '</p>',
 		)
 	);
 
@@ -87,10 +88,24 @@ function add_help_tabs() {
 		array(
 			'id'      => 'rssclub-how-it-works',
 			'title'   => __( 'How it works', 'rssclub' ),
-			'content' => '<ul>' .
+			'content' => '<h2>' . esc_html__( 'How it works', 'rssclub' ) . '</h2>' .
+				'<ul>' .
 				'<li>' . esc_html__( 'RSS Club posts are added to your main feed and to every feed that contains regular posts.', 'rssclub' ) . '</li>' .
 				'<li>' . esc_html__( 'They do not show up on your homepage or in your regular post archives.', 'rssclub' ) . '</li>' .
 				'<li>' . esc_html__( 'Every RSS Club post gets a footnote that links to the RSS Club rules.', 'rssclub' ) . '</li>' .
+				'</ul>',
+		)
+	);
+
+	$screen->add_help_tab(
+		array(
+			'id'      => 'rssclub-manifesto',
+			'title'   => __( 'Manifesto', 'rssclub' ),
+			'content' => '<h2>' . esc_html__( 'Manifesto', 'rssclub' ) . '</h2>' .
+				'<ul>' .
+				'<li>' . esc_html__( '1st rule of RSS Club is “Don’t Talk About RSS Club”.', 'rssclub' ) . '</li>' .
+				'<li>' . esc_html__( '2nd rule of RSS Club is “Don’t Share on Social Media”.', 'rssclub' ) . '</li>' .
+				'<li>' . esc_html__( '3rd rule of RSS Club is “Provide Value”.', 'rssclub' ) . '</li>' .
 				'</ul>',
 		)
 	);
